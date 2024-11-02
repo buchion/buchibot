@@ -6,15 +6,15 @@ physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 # p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
-# https://imgur.com/a/xjVefDL
 
 p.setGravity(0,0,-9.8)
-planeId = p.loadURDF("plane.urdf")
+planeId = p.loadURDF("body.urdf")
+robotId = p.loadURDF("plane.urdf")
 
-p.loadSDF("box.sdf")
+p.loadSDF("world.sdf")
 for t in range(0, 1000):
     p.stepSimulation()
-    # time.sleep(1/60)
+    time.sleep(1/60)
     print(t)
 
 
