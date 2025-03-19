@@ -19,12 +19,12 @@ def Create_Robot():
 
     # Torso
     pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1.5], size=[length, width, height])
-    pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg", type="revolute", position=[-0.5, 0, 0.5])  # Moved to the side
+    pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg", type="revolute", position=[-0.5, 0, 0.5])
 
-    pyrosim.Send_Cube(name="BackLeg", pos=[-0.5, 0, 0], size=[width, length, height])  # Rotated to align
-    pyrosim.Send_Joint(name="Torso_FrontLeg", parent="Torso", child="FrontLeg", type="revolute", position=[0.5, 0, 0.5])  # Moved forward
+    pyrosim.Send_Cube(name="BackLeg", pos=[-0.5, 0, 0], size=[width, length, height])
+    pyrosim.Send_Joint(name="Torso_FrontLeg", parent="Torso", child="FrontLeg", type="revolute", position=[0.5, 0, 0.5])
 
-    pyrosim.Send_Cube(name="FrontLeg", pos=[0.5, 0, 0], size=[width, length, height])  # Rotated to align
+    pyrosim.Send_Cube(name="FrontLeg", pos=[0.5, 0, 0], size=[width, length, height])
 
     pyrosim.End()
 

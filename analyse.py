@@ -1,43 +1,35 @@
 # import numpy as np
 # import matplotlib.pyplot as plt
 
-# # Load sensor values
-# backLegSensorValues = np.load("data/backLegSensorValues.npy")
+# targetAngles_BackLeg = np.load("data/targetAngles_BackLeg.npy")
+# targetAngles_FrontLeg = np.load("data/targetAngles_FrontLeg.npy")
 
-# # Print the loaded values
-# print(backLegSensorValues)
 
-# # Plot the sensor values
-# plt.plot(backLegSensorValues, label="Back Leg Sensor Values")
-# plt.xlabel("Time (index)")
-# plt.ylabel("Sensor Reading")
-# plt.title("Back Leg Sensor Values Over Time")
+# plt.figure(figsize=(10, 5))
+# plt.plot(targetAngles_BackLeg, label="BackLeg Motor Command", color="blue")
+# plt.plot(targetAngles_FrontLeg, label="FrontLeg Motor Command", color="red")
+# plt.xlabel("Time Step")
+# plt.ylabel("Target Angle (radians)")
+# plt.title("Motor Commands Over Time")
 # plt.legend()
+# plt.grid()
 # plt.show()
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load sensor values
-backLegSensorValues = np.load("data/backLegSensorValues.npy")
-frontLegSensorValues = np.load("data/frontLegSensorValues.npy")
+targetAngles_BackLeg = np.load("data/targetAngles_BackLeg.npy")
+targetAngles_FrontLeg = np.load("data/targetAngles_FrontLeg.npy")
 
-# Print the loaded values
-print("Back Leg Sensor Values:", backLegSensorValues)
-print("Front Leg Sensor Values:", frontLegSensorValues)
+time_steps = np.arange(len(targetAngles_BackLeg))
 
-# Plot sensor values
-plt.plot(backLegSensorValues, label="Back Leg Sensor", linewidth=2)  # Thicker line
-plt.plot(frontLegSensorValues, label="Front Leg Sensor")  # Default width
-
-# Add labels and title
-plt.xlabel("Time (index)")
-plt.ylabel("Sensor Reading")
-plt.title("Sensor Values Over Time")
-
-# Add a legend to differentiate the lines
+plt.figure(figsize=(10, 5))
+plt.plot(time_steps, targetAngles_BackLeg, label="Back Leg", color="blue")
+plt.plot(time_steps, targetAngles_FrontLeg, label="Front Leg", color="red", linestyle="dashed")
+plt.xlabel("Time Step")
+plt.ylabel("Target Angle (radians)")
+plt.title("Motor Command Sinusoids")
 plt.legend()
-
-# Show the plot
+plt.grid()
 plt.show()
