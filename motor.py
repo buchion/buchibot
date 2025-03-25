@@ -5,7 +5,6 @@ import numpy as np
 
 class MOTOR:
     def __init__(self, jointName):
-        # Ensure jointName is always a string
         if isinstance(jointName, bytes):
             jointName = jointName.decode("utf-8")
         
