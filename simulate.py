@@ -8,6 +8,8 @@ import os
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
+p.configureDebugVisualizer(p.COV_ENABLE_GUI,0)
+
 p.setGravity(0, 0, -9.8)
 robotId = p.loadURDF("body.urdf")
 planeId = p.loadURDF("plane.urdf")
@@ -17,7 +19,7 @@ pyrosim.Prepare_To_Simulate(robotId)
 
 os.makedirs("data", exist_ok=True)
 
-num_steps = 200
+num_steps = 1000
 backLegSensorValues = np.zeros(num_steps)
 frontLegSensorValues = np.zeros(num_steps)  # Adding front leg sensor
 
