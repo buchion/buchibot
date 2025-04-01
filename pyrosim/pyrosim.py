@@ -60,6 +60,11 @@ def Get_Touch_Sensor_Value_For_Link(linkName):
 
     return touchValue
 
+def Update(self):
+    for neuronName in self.neurons:
+        if self.neurons[neuronName].Is_Sensor_Neuron():
+            self.neurons[neuronName].Update_Sensor_Neuron(self)
+
 def Prepare_Link_Dictionary(bodyID):
 
     global linkNamesToIndices

@@ -74,6 +74,7 @@ import time
 import constants as c
 from world import WORLD
 from robot import ROBOT
+from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 class SIMULATION:
     def __init__(self):
@@ -88,6 +89,7 @@ class SIMULATION:
         for t in range(c.NUM_STEPS):
             p.stepSimulation()
             self.robot.Sense(t)
+            self.robot.Think()
             self.robot.Act(t)
             time.sleep(1 / 60)
 
