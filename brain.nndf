@@ -5,3 +5,5 @@
     <neuron name = "3" type = "motor"  jointName = "Torso_BackLeg" />
     <neuron name = "4" type = "motor"  jointName = "Torso_FrontLeg" />
 </neuralNetwork>
+
+<neuron name="motor0" type="motor" jointName="Torso_BackLeg"/>

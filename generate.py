@@ -24,6 +24,7 @@ def Generate_Brain ():
     pyrosim.Send_Motor_Neuron( name = 4 , jointName = "Torso_FrontLeg")
     pyrosim.End()
 
+
 def Generate_Body ():
     pyrosim.Start_URDF("body.urdf")
 

@@ -42,6 +42,16 @@ def End_Model():
 
     model.Save_End_Tag(f)
 
+# def Get_Touch_Sensor_Value_For_Link(linkName):
+#     linkIndex = linkNamesToIndices[linkName.encode("utf-8")]
+#     pts = p.getContactPoints(bodyA=robotId, linkIndexA=linkIndex)
+
+#     if pts is None:
+#         return 0.0
+
+#     return 1.0 if len(pts) > 0 else 0.0
+
+
 def Get_Touch_Sensor_Value_For_Link(linkName):
 
     touchValue = -1.0
@@ -52,13 +62,16 @@ def Get_Touch_Sensor_Value_For_Link(linkName):
 
     for pt in pts:
 
+        if pts is None:
+            print(f"[WARNING] getContactPoints returned None for link: {linkName}")
+            return 0.0
+
         linkIndex = pt[4]
 
         if ( linkIndex == desiredLinkIndex ):
-
             touchValue = 1.0
-
     return touchValue
+
 
 def Update(self):
     for neuronName in self.neurons:
@@ -146,15 +159,12 @@ def Send_Joint(name,parent,child,type,position):
     joint.Save(f)
 
 def Send_Motor_Neuron(name,jointName):
-
     f.write('    <neuron name = "' + str(name) + '" type = "motor"  jointName = "' + jointName + '" />\n')
 
 def Send_Sensor_Neuron(name,linkName):
-
     f.write('    <neuron name = "' + str(name) + '" type = "sensor" linkName = "' + linkName + '" />\n')
 
 def Send_Synapse( sourceNeuronName , targetNeuronName , weight ):
-
     f.write('    <synapse sourceNeuronName = "' + str(sourceNeuronName) + '" targetNeuronName = "' + str(targetNeuronName) + '" weight = "' + str(weight) + '" />\n')
 
  
